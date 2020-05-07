@@ -34,8 +34,12 @@ struct TareaDescripcion: View {
 //                NavigationLink(destination: EditarTarea(tarea: self.tarea)) {
 //                    Text("Editar").padding(30).foregroundColor(.gray)
 //                }
-                Text("\(self.tarea.fecha,formatter: dateFormatter)")
+                if(self.tarea.tieneFecha){
+                    Text("")
+                    Text("\(self.tarea.fecha,formatter: dateFormatter)")
                     .padding(.horizontal,30)
+                }
+
                 Spacer()
             }
 //            .background(Color.red)

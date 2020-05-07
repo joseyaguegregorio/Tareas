@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="TareasBaseDatos" representedClassName=".TareasBaseDatos" syncable="YES">
+        <attribute name="creacion" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="descripcion" optional="YES" attributeType="String"/>
         <attribute name="fecha" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="nombre" optional="YES" attributeType="String"/>
+        <attribute name="tieneFecha" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="TareasBaseDatos" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="TareasBaseDatos" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

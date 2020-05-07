@@ -7,16 +7,16 @@
 //
 
 import SwiftUI
-struct EjemploTarea: Identifiable{
-    var id: UUID = UUID()
-    var nombre: String
-    init(nombre:String){
-        self.nombre = nombre
-    }
-}
+//struct EjemploTarea: Identifiable{
+//    var id: UUID = UUID()
+//    var nombre: String
+//    init(nombre:String){
+//        self.nombre = nombre
+//    }
+//}
 
 struct ContentView: View {
-    @ State var TareasEj: [EjemploTarea] = [EjemploTarea(nombre: "Lenguaje de Marcas"),EjemploTarea(nombre: "Comprar"),EjemploTarea(nombre: "Programacion")]
+//    @ State var TareasEj: [EjemploTarea] = [EjemploTarea(nombre: "Lenguaje de Marcas"),EjemploTarea(nombre: "Comprar"),EjemploTarea(nombre: "Programacion")]
     @State var verSheet = false
 
 //ESTO SE TIENE QUE PONER EN CADA VISTA QUE SE QUIERA USAR CORE DATA

@@ -13,6 +13,8 @@ class TareasBaseDatos: NSManagedObject, Identifiable{
     @NSManaged public var nombre: String
     @NSManaged public var descripcion: String
     @NSManaged public var fecha: Date
+    @NSManaged public var creacion: Date
+    @NSManaged public var tieneFecha: Bool
 }
 
 

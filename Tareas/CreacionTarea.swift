@@ -7,23 +7,29 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct CreacionTarea: View {
 
     //ESTO SE TIENE QUE PONER EN CADA VISTA QUE SE QUIERA GUARDAR COREDATA
     @Environment(\.managedObjectContext) var contexto
+    @Environment(\.presentationMode) var atras
+
     @State private var descripcion: String = ""
     @State private var nombre: String = ""
+    @State private var tieneFecha: Bool = false
     @State private var fecha: Date = Date()
-    //    @State var prioridad: Int
-    @Environment(\.presentationMode) var atras
-    @State var colorLetra = true
+    var fechaCompartativaSalida: Date = Date()
 
-//    var dateFormatter: DateFormatter {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .full
-//        return formatter
-//    }
+
+    @State var colorLetra = true
+    @State var opacidadFecha = true
+
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        return formatter
+    }
 
 
 
@@ -57,21 +63,48 @@ struct CreacionTarea: View {
                 .padding()
             //            Text("Prioridad")
             //            TextField("prioridad", value: $prioridad, formatter: NumberFormatter()).padding(38).keyboardType(.numberPad)
+            Button(action: {
+                self.opacidadFecha.toggle()
+            }) {
+                Text("\(self.fecha,formatter: dateFormatter)")
+                    .bold()
+                    .padding()
+                    .padding(.top,30)
+                    .opacity(0.5)
+                    .foregroundColor(Color.black)
+            }
+
+
             HStack(alignment: .center) {
                 Spacer()
 
-                DatePicker("Introduce fecha", selection: $fecha, in: Date()...,displayedComponents: .date)
+                DatePicker("Poner fecha", selection: $fecha, in: Date()...,displayedComponents: .date)
                     .labelsHidden()
                     .environment(\.locale, Locale.init(identifier: "es"))
-                    .frame(width: 23, height: 23)
-//                    .fixedSize().scaledToFit()
-//                    .background(Color.red)
+                    .opacity(opacidadFecha ? 0 : 1 )
 
 //                Text("\(fechaTarea,formatter: dateFormatter)")
                 Spacer()
             }
+
             Spacer()
+
             Button(action:{
+                print(self.fechaCompartativaSalida.description)
+                print(self.fecha.description)
+
+//Comparo que sea un dia diferente al actual, ya que si es el actual no se guradara el bool de la fecha, para no mostrarlo en la descripcion
+                if !(Calendar.current.isDate(self.fecha, inSameDayAs: self.fechaCompartativaSalida)){
+                    print("Mismo dia")
+                    self.tieneFecha = true
+                }
+
+//                if self.fecha != self.fechaCompartativaSalida {
+////                    print("Si")
+////                    print("\(self.fecha)")
+////                    print("\(self.fechaCompartativaSalida)")
+//                    self.tieneFecha = true
+//                }
                 //Hago todo esto para que no deje guardar sin nombre
                 if self.nombre==""{
                     if (self.nombre,self.descripcion) == ("",""){
@@ -88,6 +121,8 @@ struct CreacionTarea: View {
                     nuevaTarea.nombre = self.nombre
                     nuevaTarea.descripcion = self.descripcion
                     nuevaTarea.fecha = self.fecha
+                    nuevaTarea.tieneFecha = self.tieneFecha
+                    nuevaTarea.creacion = Date()
                     do{
                         try self.contexto.save()
                         print("Guardado Correctamente")
