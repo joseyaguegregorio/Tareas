@@ -21,6 +21,7 @@ struct EditarTarea: View {
     @Environment(\.presentationMode) var atras
     @State var colorLetra = true
     @State var opacidadFecha = true
+    @State var fechaAux: Date = Date()
 
 
 
@@ -65,21 +66,21 @@ struct EditarTarea: View {
                 .onAppear {
                     self.descripcion = self.tarea.descripcion
             }
-            //            if(self.tarea.tieneFecha){
-            //                Text("")
-            //                Text("\(self.tarea.fecha,formatter: dateFormatter)")
-            //                .padding(.horizontal,30)
-            //            }
             Button(action: {
                 self.opacidadFecha.toggle()
-                self.fecha = self.tarea.fecha
             }) {
-                Text(self.tarea.tieneFecha ? "\(self.fecha,formatter: dateFormatter)" : "\(Date(),formatter: dateFormatter)")
+                Text("\(self.fecha,formatter: dateFormatter)")
                     .bold()
                     .padding()
                     .padding(.top,30)
                     .opacity(0.5)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.black).onAppear {
+                        if(self.tarea.tieneFecha){
+                            self.fecha = self.tarea.fecha
+                        }else{
+                            self.fecha = Date()
+                        }
+                }
             }
             HStack(alignment: .center) {
                 Spacer()
@@ -88,8 +89,6 @@ struct EditarTarea: View {
                     .labelsHidden()
                     .environment(\.locale, Locale.init(identifier: "es"))
                     .opacity(opacidadFecha ? 0 : 1 )
-
-                //                Text("\(fechaTarea,formatter: dateFormatter)")
                 Spacer()
             }
             
@@ -101,9 +100,6 @@ struct EditarTarea: View {
                     self.tarea.tieneFecha = true
                     self.tarea.fecha = self.fecha
                 }
-
-
-                
                 if self.nombre==""{
                     if (self.nombre,self.descripcion) == ("",""){
                         print("No se guardo nada")
@@ -125,9 +121,6 @@ struct EditarTarea: View {
                         print("Salio un error al editar", error.localizedDescription)
                     }
                 }
-                
-                
-                
             }){
                 HStack(alignment: .center) {
                     Spacer()
@@ -136,14 +129,9 @@ struct EditarTarea: View {
                         .padding()
                         .background(Color.gray)
                         .cornerRadius(40)
-                    
-                    
-                    
                     Spacer()
                 }
             }
-                
-                
                 //          Al ser una sheet este valor deja de existir
                 //            .navigationBarTitle("Nueva")
                 .navigationBarTitle("Edicion", displayMode: .inline)

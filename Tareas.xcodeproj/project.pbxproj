@@ -34,6 +34,7 @@
 		A67617A72461EB0C00648F98 /* TareasBaseDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareasBaseDatos.swift; sourceTree = "<group>"; };
 		A67617A92461EE7900648F98 /* TareaDescripcion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareaDescripcion.swift; sourceTree = "<group>"; };
 		A67617AB2461EEA100648F98 /* CreacionTarea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreacionTarea.swift; sourceTree = "<group>"; };
+		A68373CD246C6C010067B8FC /* Tareas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tareas.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		A676178F2461EA7A00648F98 /* Tareas */ = {
 			isa = PBXGroup;
 			children = (
+				A68373CD246C6C010067B8FC /* Tareas.entitlements */,
 				A67617902461EA7A00648F98 /* AppDelegate.swift */,
 				A67617922461EA7A00648F98 /* SceneDelegate.swift */,
 				A67617972461EA7A00648F98 /* ContentView.swift */,
@@ -117,7 +119,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Jose María Yagüe";
 				TargetAttributes = {
 					A676178C2461EA7A00648F98 = {
@@ -212,6 +214,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -272,6 +275,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -304,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tareas/Tareas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Tareas/Preview Content\"";
 				DEVELOPMENT_TEAM = 9JYBKRK4UD;
@@ -315,6 +320,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseyague.Tareas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -324,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tareas/Tareas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Tareas/Preview Content\"";
 				DEVELOPMENT_TEAM = 9JYBKRK4UD;
@@ -335,6 +342,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseyague.Tareas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

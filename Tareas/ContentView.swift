@@ -90,6 +90,7 @@ struct ContentView: View {
 //Si no le paso .environment(\.managedObjectContext, self.contexto) falla al guardar, en el tutorial no lo hace con sheet
                 CreacionTarea().environment(\.managedObjectContext, self.contexto)
             }
+            .phoneOnlyStackNavigationView()
         }
     }
 }
@@ -99,4 +100,14 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
+//Codigo puesto al final de NavigationView Hace que la pantalla no se divida en dos al girar, sigue sin resolver
+//el problema de que cambia el displayMode de .navigationBarTitle(), solo probado en simulador
+extension View {
+    func phoneOnlyStackNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        } else {
+            return AnyView(self)
+        }
+    }
+}
